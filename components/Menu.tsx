@@ -1,0 +1,1 @@
+// This file is deprecated. Navigation logic moved to Navigation.tsx
