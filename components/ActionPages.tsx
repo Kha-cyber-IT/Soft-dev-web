@@ -538,17 +538,17 @@ export const ActionPages: React.FC<ActionPageProps> = ({ page, setPage }) => {
                     Choose to Change is a faith-based non-profit organization that helps those struggling with addiction, ex-convicts and people in recovery of any type to change their lives and restore their families.
                 </p>
                 <p className="text-white/90">
-                    If you or someone you love needs help, <button onClick={() => setPage(Page.GetConnected)} className="text-blue-400 font-bold underline decoration-blue-500 underline-offset-4 hover:text-blue-300 transition-colors">contact us</button> today.
+                    If you or someone you love needs help, <button onClick={() => setPage(Page.GetConnected)} className="text-blue-400 font-bold underline decoration-blue-500 underline-offset-4 font-heading">contact us</button> today.
                 </p>
             </div>
         </div>
         
         <div className="mt-16 text-center">
-            <h4 className="text-2xl font-bold text-white mb-8 uppercase tracking-widest font-heading">Change your life and never look back</h4>
+            <h4 className="text-3xl font-black text-white mb-8 uppercase tracking-tighter font-heading">Change your life and never look back</h4>
             <div className="flex justify-center mt-8">
                 <button 
                   onClick={() => window.open('https://open.spotify.com/show/4vp0VQPypNmILRJcIfn1lc', '_blank')} 
-                  className="liquid-glass text-white font-bold py-4 px-10 rounded-full shadow-[0_0_25px_rgba(168,85,247,0.7)] hover:shadow-[0_0_35px_rgba(168,85,247,0.9)] border border-purple-500/50 hover:bg-white/10 active:scale-95 transition-all flex items-center gap-4 font-heading uppercase tracking-widest"
+                  className="liquid-glass text-white font-bold py-5 px-12 rounded-full shadow-[0_0_25px_rgba(168,85,247,0.7)] hover:shadow-[0_0_35px_rgba(168,85,247,0.9)] border border-purple-500/50 hover:bg-white/10 active:scale-95 transition-all flex items-center gap-4 font-heading uppercase tracking-widest text-lg"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.54 8.46 9.059 8.22 5.28 9.361c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.4-1.02 15.66 1.44.539.3.66 1.02.3 1.56-.3.539-1.02.659-1.56.3z"/></svg>
                     Play Testimony Pod
