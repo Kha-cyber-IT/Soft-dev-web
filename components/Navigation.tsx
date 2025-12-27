@@ -41,7 +41,19 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         scrolled ? 'shadow-lg border-b border-white/10' : 'bg-transparent border-transparent'
       }`}>
         {/* Logo - Sized to be more visible and clear while keeping it proportional */}
-        <div className="flex items-center gap-2 cursor-pointer active-elevate" onClick={() => handleNavClick(Page.Home)}>
+        <div
+          role="button"
+          tabIndex={0}
+          aria-label="Go to Home"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleNavClick(Page.Home);
+            }
+          }}
+          className="flex items-center gap-2 cursor-pointer active-elevate"
+          onClick={() => handleNavClick(Page.Home)}
+        >
           <div className="h-10 w-28 md:w-36 bg-white rounded-md flex items-center justify-center px-3 py-1 shadow-sm">
             <img 
               src="https://i.postimg.cc/HW79Ljpk/1763367303077.png" 
@@ -70,6 +82,7 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         <div className="hidden md:flex items-center gap-3">
           <button 
             onClick={() => window.open('https://www.cfmmap.org/', '_blank')}
+            aria-label="Find Church (opens in a new tab)"
             className="px-4 py-2 text-sm font-medium hover-elevate border border-white/20 rounded-md text-white/80 hover:text-white"
           >
             Find Church
@@ -85,6 +98,8 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         {/* Mobile Menu Toggle */}
         <button 
           onClick={() => setIsOpen(!isOpen)} 
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
           className="md:hidden p-2 active-elevate rounded-md bg-white/5 border border-white/10"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -93,12 +108,16 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
 
       {/* Slide-in Menu Panel */}
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation Menu"
         className={`fixed inset-0 z-[110] bg-black/98 backdrop-blur-2xl transition-all duration-500 ease-in-out flex flex-col items-center justify-center ${
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
         }`}
       >
         <button 
           onClick={() => setIsOpen(false)} 
+          aria-label="Close menu"
           className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors active-elevate"
         >
             <X size={40} />
