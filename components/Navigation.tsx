@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Home, Building, Users, Heart, Calendar, BookOpen, MapPin, Menu } from 'lucide-react';
+import { X, Home, Building, Users, Heart, Calendar, BookOpen, MapPin, Menu, ExternalLink } from 'lucide-react';
 import { Page, NavigationProps } from '../types';
 
 interface ExtendedNavProps extends NavigationProps {
@@ -41,7 +41,11 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         scrolled ? 'shadow-lg border-b border-white/10' : 'bg-transparent border-transparent'
       }`}>
         {/* Logo - Sized to be more visible and clear while keeping it proportional */}
-        <div className="flex items-center gap-2 cursor-pointer active-elevate" onClick={() => handleNavClick(Page.Home)}>
+        <button
+          className="flex items-center gap-2 active-elevate"
+          onClick={() => handleNavClick(Page.Home)}
+          aria-label="Go to Home"
+        >
           <div className="h-10 w-28 md:w-36 bg-white rounded-md flex items-center justify-center px-3 py-1 shadow-sm">
             <img 
               src="https://i.postimg.cc/HW79Ljpk/1763367303077.png" 
@@ -49,7 +53,7 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
               className="h-full w-auto object-contain" 
             />
           </div>
-        </div>
+        </button>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
@@ -70,9 +74,10 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         <div className="hidden md:flex items-center gap-3">
           <button 
             onClick={() => window.open('https://www.cfmmap.org/', '_blank')}
-            className="px-4 py-2 text-sm font-medium hover-elevate border border-white/20 rounded-md text-white/80 hover:text-white"
+            className="px-4 py-2 text-sm font-medium hover-elevate border border-white/20 rounded-md text-white/80 hover:text-white flex items-center gap-2"
+            aria-label="Find Church (opens in new tab)"
           >
-            Find Church
+            Find Church <ExternalLink size={14} />
           </button>
           <button 
             onClick={() => handleNavClick(Page.Give)}
@@ -86,6 +91,8 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         <button 
           onClick={() => setIsOpen(!isOpen)} 
           className="md:hidden p-2 active-elevate rounded-md bg-white/5 border border-white/10"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -96,10 +103,14 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         className={`fixed inset-0 z-[110] bg-black/98 backdrop-blur-2xl transition-all duration-500 ease-in-out flex flex-col items-center justify-center ${
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
         }`}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!isOpen}
       >
         <button 
           onClick={() => setIsOpen(false)} 
           className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors active-elevate"
+          aria-label="Close menu"
         >
             <X size={40} />
         </button>
@@ -129,6 +140,7 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
             <button 
                 onClick={() => handleNavClick(Page.Give)}
                 className="w-full flex items-center justify-center bg-blue-600 text-white font-bold py-5 px-8 text-lg rounded-2xl border border-blue-400 shadow-lg active-elevate-2 mt-6"
+                aria-label="Give Online"
             >
                 Give Online
             </button>
