@@ -1,0 +1,3 @@
+## 2024-05-23 - Accessibility Patterns
+**Learning:** This application uses state-based navigation (`Page` enum) instead of a router, which means `<a>` tags are often replaced by `<div>` or `<button>` with `onClick`. This creates a pattern of missing semantic links and accessibility features (like open-in-new-tab announcements).
+**Action:** When working on navigation or links in this codebase, prioritize ensuring `button`s behave like links (accessible names) or convert them to `<a>` tags where appropriate, though preserving the `onClick` navigation logic might require `button`s. For external links, always ensure screen readers know a new tab will open.
