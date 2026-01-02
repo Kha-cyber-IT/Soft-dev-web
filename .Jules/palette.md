@@ -1,0 +1,3 @@
+## 2024-05-23 - Navigation Accessibility
+**Learning:** Converting `div` with `onClick` to `<button>` is a high-impact, low-effort accessibility win. It automatically handles keyboard focus and activation without needing extra `role` or `tabIndex` attributes.
+**Action:** Always check clickable elements in the nav bar. If they are `div`s, convert them to `button`s immediately. Also, ensuring `aria-expanded` is present on menu toggles is critical for screen reader users to understand the menu state.
