@@ -41,7 +41,11 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         scrolled ? 'shadow-lg border-b border-white/10' : 'bg-transparent border-transparent'
       }`}>
         {/* Logo - Sized to be more visible and clear while keeping it proportional */}
-        <div className="flex items-center gap-2 cursor-pointer active-elevate" onClick={() => handleNavClick(Page.Home)}>
+        <button
+          className="flex items-center gap-2 cursor-pointer active-elevate"
+          onClick={() => handleNavClick(Page.Home)}
+          aria-label="Go to Home"
+        >
           <div className="h-10 w-28 md:w-36 bg-white rounded-md flex items-center justify-center px-3 py-1 shadow-sm">
             <img 
               src="https://i.postimg.cc/HW79Ljpk/1763367303077.png" 
@@ -49,7 +53,7 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
               className="h-full w-auto object-contain" 
             />
           </div>
-        </div>
+        </button>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
@@ -86,6 +90,8 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         <button 
           onClick={() => setIsOpen(!isOpen)} 
           className="md:hidden p-2 active-elevate rounded-md bg-white/5 border border-white/10"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -100,6 +106,7 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         <button 
           onClick={() => setIsOpen(false)} 
           className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors active-elevate"
+          aria-label="Close navigation menu"
         >
             <X size={40} />
         </button>
