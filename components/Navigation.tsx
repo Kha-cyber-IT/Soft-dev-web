@@ -86,6 +86,8 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         <button 
           onClick={() => setIsOpen(!isOpen)} 
           className="md:hidden p-2 active-elevate rounded-md bg-white/5 border border-white/10"
+          aria-label={isOpen ? "Close main menu" : "Open main menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -96,10 +98,12 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         className={`fixed inset-0 z-[110] bg-black/98 backdrop-blur-2xl transition-all duration-500 ease-in-out flex flex-col items-center justify-center ${
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
         }`}
+        aria-hidden={!isOpen}
       >
         <button 
           onClick={() => setIsOpen(false)} 
           className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors active-elevate"
+          aria-label="Close main menu"
         >
             <X size={40} />
         </button>
