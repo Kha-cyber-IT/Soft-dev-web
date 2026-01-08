@@ -41,15 +41,19 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         scrolled ? 'shadow-lg border-b border-white/10' : 'bg-transparent border-transparent'
       }`}>
         {/* Logo - Sized to be more visible and clear while keeping it proportional */}
-        <div className="flex items-center gap-2 cursor-pointer active-elevate" onClick={() => handleNavClick(Page.Home)}>
+        <button
+          className="flex items-center gap-2 cursor-pointer active-elevate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md"
+          onClick={() => handleNavClick(Page.Home)}
+          aria-label="Home"
+        >
           <div className="h-10 w-28 md:w-36 bg-white rounded-md flex items-center justify-center px-3 py-1 shadow-sm">
             <img 
               src="https://i.postimg.cc/HW79Ljpk/1763367303077.png" 
-              alt="PH Logo" 
+              alt="The Potter's House Logo"
               className="h-full w-auto object-contain" 
             />
           </div>
-        </div>
+        </button>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
@@ -57,7 +61,8 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`text-sm font-medium transition-colors hover:text-blue-400 font-heading ${
+              aria-current={currentPage === item.id ? 'page' : undefined}
+              className={`text-sm font-medium transition-colors hover:text-blue-400 font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-sm px-1 ${
                 currentPage === item.id ? 'text-blue-400' : 'text-white/70'
               }`}
             >
@@ -85,7 +90,9 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
         {/* Mobile Menu Toggle */}
         <button 
           onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden p-2 active-elevate rounded-md bg-white/5 border border-white/10"
+          className="md:hidden p-2 active-elevate rounded-md bg-white/5 border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -99,7 +106,8 @@ export const Navigation: React.FC<ExtendedNavProps> = ({
       >
         <button 
           onClick={() => setIsOpen(false)} 
-          className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors active-elevate"
+          className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors active-elevate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md"
+          aria-label="Close navigation menu"
         >
             <X size={40} />
         </button>
